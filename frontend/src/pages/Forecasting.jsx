@@ -90,9 +90,9 @@ const Forecasting = () => {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-700">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-2 flex items-center gap-3">
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-white mb-2 flex items-center gap-3">
             AI Demand Forecasting
             <div className="bg-solar/10 px-2 py-0.5 rounded text-[10px] font-black uppercase text-solar border border-solar/20">Alpha</div>
           </h1>
@@ -141,10 +141,10 @@ const Forecasting = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 md:p-8">
         {/* Main Chart */}
-        <div className="lg:col-span-3 bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-8">
+        <div className="lg:col-span-3 bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 md:p-8">
              <div className="flex items-center gap-2 px-4 py-2 bg-dark-950/50 backdrop-blur-md rounded-2xl border border-dark-800">
                <BrainCircuit className="w-4 h-4 text-solar" />
                <span className="text-xs font-bold text-dark-300">Model: <span className="text-solar">{data?.modelUsed || 'Computing...'}</span></span>
@@ -235,7 +235,7 @@ const Forecasting = () => {
             </div>
             <div className="space-y-1 mb-6">
               <p className="text-dark-500 text-xs font-bold uppercase tracking-wider">Projected Capacity</p>
-              <h4 className="text-3xl font-display font-bold text-white">
+              <h4 className="text-2xl md:text-3xl font-display font-bold text-white">
                 {data?.forecast[data.forecast.length - 1].predicted_capacity.toLocaleString(undefined, { maximumFractionDigits: 0 })} <span className="text-xs text-dark-500">kW</span>
               </h4>
             </div>

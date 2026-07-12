@@ -31,23 +31,23 @@ const ProjectOverview = () => {
       </div>
 
       {/* Hero / Problem & Solution */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
         <div className="bg-dark-900/60 backdrop-blur-2xl border border-white/5 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden group hover:border-solar/30 transition-all duration-500 hover:shadow-[0_0_40px_rgba(249,115,22,0.1)]">
-           <div className="absolute -top-10 -right-10 p-8 opacity-10 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 pointer-events-none">
+           <div className="absolute -top-10 -right-10 p-4 md:p-8 opacity-10 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 pointer-events-none">
               <Globe2 className="w-64 h-64 text-solar" />
            </div>
-           <h2 className="text-3xl font-display font-bold text-white mb-6 relative z-10">The Problem</h2>
+           <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-6 relative z-10">The Problem</h2>
            <p className="text-xl text-dark-300 leading-relaxed relative z-10 mb-10">
              Currently, data regarding India's solar capacity, state-wise installations, and revenue generation is highly fragmented. Government agencies publish static PDFs or raw Excel sheets, making it incredibly difficult for manufacturers, investors, and policymakers to track trends or forecast future demand.
            </p>
-           <h2 className="text-3xl font-display font-bold text-white mb-6 relative z-10">The Solution</h2>
+           <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-6 relative z-10">The Solution</h2>
            <p className="text-xl text-dark-300 leading-relaxed relative z-10">
              We built an integrated, AI-driven web platform that acts as a centralized <span className="bg-solar/20 text-solar px-2 py-1 rounded-md border border-solar/30 font-bold mx-1">'Single Source of Truth'</span>. It processes historical data, visualizes it interactively, and predicts future hardware requirements using Machine Learning.
            </p>
         </div>
 
         <div className="bg-dark-900/60 backdrop-blur-2xl border border-white/5 p-10 rounded-[2.5rem] shadow-2xl hover:border-solar/30 transition-all duration-500 hover:shadow-[0_0_40px_rgba(249,115,22,0.1)] relative z-10">
-           <h2 className="text-3xl font-display font-bold text-white mb-8 flex items-center gap-4">
+           <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-8 flex items-center gap-4">
              <div className="bg-solar/20 p-3 rounded-2xl border border-solar/30">
                <Database className="w-8 h-8 text-solar" />
              </div>
@@ -78,11 +78,11 @@ const ProjectOverview = () => {
              </div>
            </div>
 
-           <div className="bg-gradient-to-r from-solar/20 to-orange-500/10 border border-solar/30 p-8 rounded-[2rem] flex items-center gap-6 relative overflow-hidden">
+           <div className="bg-gradient-to-r from-solar/20 to-orange-500/10 border border-solar/30 p-4 md:p-8 rounded-[2rem] flex items-center gap-4 md:gap-6 relative overflow-hidden">
              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-solar/20 to-transparent pointer-events-none"></div>
              <BarChart4 className="w-12 h-12 text-solar shrink-0 relative z-10" />
              <div className="relative z-10">
-               <p className="text-4xl font-display font-black text-white leading-none mb-2">500+ <span className="text-solar">Total Data Points</span></p>
+               <p className="text-3xl md:text-4xl font-display font-black text-white leading-none mb-2">500+ <span className="text-solar">Total Data Points</span></p>
                <p className="text-base text-dark-300">Mathematically normalized to prevent state-city double counting.</p>
              </div>
            </div>
@@ -96,7 +96,7 @@ const ProjectOverview = () => {
         </div>
 
         <div className="text-center mb-16 relative z-10">
-          <h2 className="text-4xl md:text-5xl font-display font-black text-white mb-6">
+          <h2 className="text-3xl md:text-4xl md:text-5xl font-display font-black text-white mb-6">
             3. Problem Definition
           </h2>
           <div className="max-w-4xl mx-auto p-6 bg-red-500/10 border border-red-500/20 rounded-2xl">
@@ -106,7 +106,7 @@ const ProjectOverview = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8 relative z-10">
           {[
             {
               title: "Problem 1 — Uneven Demand Distribution (No Visibility)",
@@ -129,7 +129,7 @@ const ProjectOverview = () => {
               example: "Pondicherry has only 49,910 kW installed — which looks insignificant — but with an 88.1% CAGR, it is growing faster than any state in India. Without CAGR analysis, this opportunity would be completely missed by a sales team that only looks at current capacity."
             }
           ].map((item, idx) => (
-            <div key={idx} className="bg-dark-950/80 border border-white/5 p-8 rounded-[2.5rem] hover:bg-dark-800/80 transition-all group/item hover:border-red-500/30">
+            <div key={idx} className="bg-dark-950/80 border border-white/5 p-4 md:p-8 rounded-[2.5rem] hover:bg-dark-800/80 transition-all group/item hover:border-red-500/30">
               <div className="flex items-start gap-4 mb-4">
                 <div className="bg-red-500/20 p-2 rounded-full mt-1 shrink-0">
                   <div className="w-3 h-3 bg-red-500 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
@@ -149,7 +149,7 @@ const ProjectOverview = () => {
           ))}
         </div>
 
-        <div className="mt-12 p-8 bg-gradient-to-r from-red-500/10 to-transparent border-l-4 border-red-500 rounded-r-2xl relative z-10">
+        <div className="mt-12 p-4 md:p-8 bg-gradient-to-r from-red-500/10 to-transparent border-l-4 border-red-500 rounded-r-2xl relative z-10">
           <p className="text-xl text-dark-200 leading-relaxed italic">
             The core problem is the <span className="text-white font-bold underline decoration-red-500 underline-offset-4">absence of a structured, data-driven solar sales intelligence system</span> that connects raw installation data to actionable <span className="text-red-400 font-bold">insights on demand, revenue, growth cycles, and future forecasting</span> — which this project directly addresses.
           </p>
@@ -159,30 +159,30 @@ const ProjectOverview = () => {
       {/* Tech Stack */}
       <div className="relative z-10 bg-dark-900/60 backdrop-blur-2xl border border-white/5 p-12 rounded-[3rem] shadow-2xl overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-solar to-transparent opacity-50"></div>
-        <h2 className="text-4xl font-display font-bold text-white mb-12 text-center">System Architecture</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-           <div className="flex flex-col items-center text-center p-8 bg-dark-950/80 border border-white/5 rounded-[2.5rem] hover:-translate-y-2 hover:border-cyan-400/50 hover:shadow-[0_10px_40px_rgba(34,211,238,0.15)] transition-all duration-300 group">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-12 text-center">System Architecture</h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:p-8 mb-16">
+           <div className="flex flex-col items-center text-center p-4 md:p-8 bg-dark-950/80 border border-white/5 rounded-[2.5rem] hover:-translate-y-2 hover:border-cyan-400/50 hover:shadow-[0_10px_40px_rgba(34,211,238,0.15)] transition-all duration-300 group">
               <div className="bg-cyan-400/10 p-5 rounded-3xl mb-6 group-hover:scale-110 transition-transform">
                 <Layers className="w-12 h-12 text-cyan-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Frontend</h3>
               <p className="text-base text-dark-400 leading-relaxed">React.js, Tailwind CSS, Recharts for responsive, modern UI components.</p>
            </div>
-           <div className="flex flex-col items-center text-center p-8 bg-dark-950/80 border border-white/5 rounded-[2.5rem] hover:-translate-y-2 hover:border-green-400/50 hover:shadow-[0_10px_40px_rgba(74,222,128,0.15)] transition-all duration-300 group">
+           <div className="flex flex-col items-center text-center p-4 md:p-8 bg-dark-950/80 border border-white/5 rounded-[2.5rem] hover:-translate-y-2 hover:border-green-400/50 hover:shadow-[0_10px_40px_rgba(74,222,128,0.15)] transition-all duration-300 group">
               <div className="bg-green-400/10 p-5 rounded-3xl mb-6 group-hover:scale-110 transition-transform">
                 <Server className="w-12 h-12 text-green-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">Backend API</h3>
               <p className="text-base text-dark-400 leading-relaxed">Node.js & Express.js orchestrating data logic and external microservices.</p>
            </div>
-           <div className="flex flex-col items-center text-center p-8 bg-dark-950/80 border border-white/5 rounded-[2.5rem] hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-[0_10px_40px_rgba(59,130,246,0.15)] transition-all duration-300 group">
+           <div className="flex flex-col items-center text-center p-4 md:p-8 bg-dark-950/80 border border-white/5 rounded-[2.5rem] hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-[0_10px_40px_rgba(59,130,246,0.15)] transition-all duration-300 group">
               <div className="bg-blue-500/10 p-5 rounded-3xl mb-6 group-hover:scale-110 transition-transform">
                 <Database className="w-12 h-12 text-blue-500" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-500 transition-colors">Database</h3>
               <p className="text-base text-dark-400 leading-relaxed">MongoDB Atlas storing user profiles, cached metrics, and session data.</p>
            </div>
-           <div className="flex flex-col items-center text-center p-8 bg-dark-950/80 border border-white/5 rounded-[2.5rem] hover:-translate-y-2 hover:border-purple-400/50 hover:shadow-[0_10px_40px_rgba(192,132,252,0.15)] transition-all duration-300 group">
+           <div className="flex flex-col items-center text-center p-4 md:p-8 bg-dark-950/80 border border-white/5 rounded-[2.5rem] hover:-translate-y-2 hover:border-purple-400/50 hover:shadow-[0_10px_40px_rgba(192,132,252,0.15)] transition-all duration-300 group">
               <div className="bg-purple-400/10 p-5 rounded-3xl mb-6 group-hover:scale-110 transition-transform">
                 <BrainCircuit className="w-12 h-12 text-purple-400" />
               </div>
@@ -212,7 +212,7 @@ const ProjectOverview = () => {
               </div>
 
               {/* Arrow 1 */}
-              <div className="flex-1 px-8 flex flex-col items-center justify-center">
+              <div className="flex-1 px-4 md:px-8 flex flex-col items-center justify-center">
                 <div className="h-px w-full bg-gradient-to-r from-cyan-400 to-green-400 relative">
                   <div className="absolute right-0 -top-1 border-y-4 border-y-transparent border-l-8 border-l-green-400"></div>
                 </div>
@@ -242,7 +242,7 @@ const ProjectOverview = () => {
               </div>
 
               {/* Arrow 2 */}
-              <div className="flex-1 px-8 flex flex-col items-center justify-center">
+              <div className="flex-1 px-4 md:px-8 flex flex-col items-center justify-center">
                 <div className="h-px w-full bg-gradient-to-r from-green-400 to-purple-400 relative">
                   <div className="absolute right-0 -top-1 border-y-4 border-y-transparent border-l-8 border-l-purple-400"></div>
                 </div>
@@ -308,54 +308,54 @@ const ProjectOverview = () => {
 
       {/* Feature Walkthrough */}
       <div className="relative z-10 space-y-8">
-        <h2 className="text-4xl font-display font-bold text-white pl-4 flex items-center gap-4">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-white pl-4 flex items-center gap-4">
           <span className="w-2 h-10 bg-solar rounded-full inline-block"></span>
           Platform Modules (Slide-by-Slide)
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-dark-900/60 backdrop-blur-xl border border-white/5 p-10 rounded-[2.5rem] flex gap-8 hover:bg-dark-800/60 transition-colors">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
+          <div className="bg-dark-900/60 backdrop-blur-xl border border-white/5 p-10 rounded-[2.5rem] flex gap-4 md:p-8 hover:bg-dark-800/60 transition-colors">
             <div className="bg-solar/10 p-5 rounded-3xl h-fit border border-solar/20 shrink-0 shadow-[0_0_20px_rgba(249,115,22,0.1)]">
               <BarChart4 className="w-10 h-10 text-solar" />
             </div>
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">1. Executive & Revenue</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">1. Executive & Revenue</h3>
               <p className="text-lg text-dark-400 leading-relaxed mb-3">
                 <strong className="text-dark-200">Physical Footprint vs CapEx:</strong> The system aggregates thousands of records to reflect over 81.8 GW of national capacity. It isolates the financial aspect by calculating the Capital Expenditure required to build that capacity using a 70/30 utility-to-rooftop cost matrix.
               </p>
             </div>
           </div>
 
-          <div className="bg-dark-900/60 backdrop-blur-xl border border-white/5 p-10 rounded-[2.5rem] flex gap-8 hover:bg-dark-800/60 transition-colors">
+          <div className="bg-dark-900/60 backdrop-blur-xl border border-white/5 p-10 rounded-[2.5rem] flex gap-4 md:p-8 hover:bg-dark-800/60 transition-colors">
             <div className="bg-green-400/10 p-5 rounded-3xl h-fit border border-green-400/20 shrink-0 shadow-[0_0_20px_rgba(74,222,128,0.1)]">
               <Code className="w-10 h-10 text-green-400" />
             </div>
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">2. Detailed Analytics</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">2. Detailed Analytics</h3>
               <p className="text-lg text-dark-400 leading-relaxed mb-3">
                 <strong className="text-dark-200">CAGR & YoY Momentum:</strong> Provides mathematically smoothed metrics like 10-Year CAGR to highlight long-term sustainable growth. City-Wise YoY flags regions where massive new mega-projects have come online.
               </p>
             </div>
           </div>
 
-          <div className="bg-dark-900/60 backdrop-blur-xl border border-white/5 p-10 rounded-[2.5rem] flex gap-8 hover:bg-dark-800/60 transition-colors">
+          <div className="bg-dark-900/60 backdrop-blur-xl border border-white/5 p-10 rounded-[2.5rem] flex gap-4 md:p-8 hover:bg-dark-800/60 transition-colors">
             <div className="bg-blue-400/10 p-5 rounded-3xl h-fit border border-blue-400/20 shrink-0 shadow-[0_0_20px_rgba(96,165,250,0.1)]">
               <Map className="w-10 h-10 text-blue-400" />
             </div>
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">3. Geo-Intelligence Hub</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">3. Geo-Intelligence Hub</h3>
               <p className="text-lg text-dark-400 leading-relaxed mb-3">
                 <strong className="text-dark-200">Spatial Heatmaps:</strong> Integrates interactive React-Leaflet maps querying Postgres. Visualizes capacity as interactive heatmaps, allowing EPCs to identify 'dark zones' ripe for future solar investment.
               </p>
             </div>
           </div>
 
-          <div className="bg-dark-900/60 backdrop-blur-xl border border-white/5 p-10 rounded-[2.5rem] flex gap-8 hover:bg-dark-800/60 transition-colors">
+          <div className="bg-dark-900/60 backdrop-blur-xl border border-white/5 p-10 rounded-[2.5rem] flex gap-4 md:p-8 hover:bg-dark-800/60 transition-colors">
             <div className="bg-purple-400/10 p-5 rounded-3xl h-fit border border-purple-400/20 shrink-0 shadow-[0_0_20px_rgba(192,132,252,0.1)]">
               <Zap className="w-10 h-10 text-purple-400" />
             </div>
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">4. Innovation Hub & AI</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">4. Innovation Hub & AI</h3>
               <p className="text-lg text-dark-400 leading-relaxed mb-3">
                 <strong className="text-dark-200">AR Simulator:</strong> Hooks into the device camera to mathematically calculate max panels on a detected surface. <br/><br/>
                 <strong className="text-dark-200">Chatbot:</strong> A context-aware assistant deployed across all screens to guide users.
@@ -371,11 +371,11 @@ const ProjectOverview = () => {
             <Cpu className="w-[600px] h-[600px] text-solar" />
          </div>
          <div className="relative z-10 max-w-5xl">
-           <div className="flex items-center gap-6 mb-10">
+           <div className="flex items-center gap-4 md:gap-6 mb-10">
              <div className="bg-solar/20 p-5 rounded-3xl border border-solar/40 shadow-[0_0_30px_rgba(249,115,22,0.2)]">
                <BrainCircuit className="w-10 h-10 text-solar" />
              </div>
-             <h2 className="text-4xl font-display font-bold text-white">Deep Dive: AI Polynomial Forecasting</h2>
+             <h2 className="text-3xl md:text-4xl font-display font-bold text-white">Deep Dive: AI Polynomial Forecasting</h2>
            </div>
            
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
@@ -421,7 +421,7 @@ const ProjectOverview = () => {
                   <h4 className="text-xl font-bold text-white">Model Selection & Validation</h4>
                   <span className="text-xs font-black bg-solar/20 text-solar px-3 py-1 rounded-full border border-solar/30">RMSE VALIDATED</span>
                 </div>
-                <div className="p-8 flex-1 space-y-6">
+                <div className="p-4 md:p-8 flex-1 space-y-6">
                   <div>
                     <h5 className="text-sm font-black text-dark-500 uppercase tracking-widest mb-3">"Best Fit" Selection Logic</h5>
                     <p className="text-base text-dark-300 leading-relaxed">
@@ -469,7 +469,7 @@ const ProjectOverview = () => {
                   { icon: BarChart4, label: "Inference Hub", sub: "Trend Extrapolation", detail: "2024-2030 Forecasts" },
                   { icon: Zap, label: "Optimization", sub: "Supply Chain Intel", detail: "RMSE-Validated Results" }
                 ].map((step, idx) => (
-                  <div key={idx} className="flex flex-col items-center group relative z-10 bg-dark-900/80 p-8 rounded-[2rem] border border-white/5 hover:border-solar/40 transition-all w-full md:w-56 text-center hover:-translate-y-2 duration-500 shadow-2xl">
+                  <div key={idx} className="flex flex-col items-center group relative z-10 bg-dark-900/80 p-4 md:p-8 rounded-[2rem] border border-white/5 hover:border-solar/40 transition-all w-full md:w-56 text-center hover:-translate-y-2 duration-500 shadow-2xl">
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-solar text-dark-950 text-[10px] font-black px-3 py-1 rounded-full uppercase">Step 0{idx + 1}</div>
                     <div className="bg-dark-950 p-5 rounded-2xl mb-4 group-hover:scale-110 transition-transform shadow-inner border border-white/5">
                       <step.icon className="w-10 h-10 text-solar" />
@@ -487,14 +487,14 @@ const ProjectOverview = () => {
            </div>
 
 
-            <div className="bg-gradient-to-r from-dark-900 to-dark-800 border border-white/10 p-8 rounded-[2rem] flex flex-col md:flex-row items-center gap-10 shadow-2xl relative overflow-hidden">
+            <div className="bg-gradient-to-r from-dark-900 to-dark-800 border border-white/10 p-4 md:p-8 rounded-[2rem] flex flex-col md:flex-row items-center gap-10 shadow-2xl relative overflow-hidden">
                <div className="absolute left-0 top-0 bottom-0 w-1 bg-solar"></div>
                <div className="flex-1">
                  <h4 className="text-2xl text-white font-bold mb-4 flex items-center gap-3">
                    <Zap className="w-6 h-6 text-solar" />
                    System Integration & Data Flow
                  </h4>
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-sm">
                    <div className="space-y-2">
                      <p className="text-dark-400 font-bold uppercase text-[10px] tracking-widest">Frontend Ingress</p>
                      <p className="text-dark-300 leading-relaxed">Forecasting page triggers a POST request to <code className="text-solar">/forecast</code> with state-specific historical data.</p>
@@ -532,11 +532,11 @@ const ProjectOverview = () => {
             <Map className="w-[600px] h-[600px] text-blue-500" />
          </div>
          <div className="relative z-10 max-w-5xl">
-           <div className="flex items-center gap-6 mb-10">
+           <div className="flex items-center gap-4 md:gap-6 mb-10">
              <div className="bg-blue-500/20 p-5 rounded-3xl border border-blue-500/40 shadow-[0_0_30px_rgba(59,130,246,0.2)]">
                <Map className="w-10 h-10 text-blue-400" />
              </div>
-             <h2 className="text-4xl font-display font-bold text-white">Deep Dive: Computer Vision Analysis</h2>
+             <h2 className="text-3xl md:text-4xl font-display font-bold text-white">Deep Dive: Computer Vision Analysis</h2>
            </div>
            
            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-12">
@@ -560,7 +560,7 @@ const ProjectOverview = () => {
              </div>
            </div>
 
-           <div className="bg-gradient-to-r from-dark-900 to-dark-800 border border-white/10 p-8 rounded-[2rem] flex items-center justify-between shadow-2xl relative overflow-hidden">
+           <div className="bg-gradient-to-r from-dark-900 to-dark-800 border border-white/10 p-4 md:p-8 rounded-[2rem] flex items-center justify-between shadow-2xl relative overflow-hidden">
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
               <div>
                 <h4 className="text-2xl text-white font-bold mb-3">Real-World Impact: Instant Site Discovery</h4>
@@ -575,13 +575,13 @@ const ProjectOverview = () => {
 
       {/* Output Graphs Gallery */}
       <div className="relative z-10 bg-dark-900/60 backdrop-blur-xl border border-white/5 p-12 rounded-[3rem] shadow-2xl">
-        <h2 className="text-4xl font-display font-bold text-white mb-4 flex items-center gap-4">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4 flex items-center gap-4">
           <span className="w-2 h-10 bg-solar rounded-full inline-block"></span>
           Data Visualization Output
         </h2>
         <p className="text-xl text-dark-400 mb-12 ml-6 font-medium">Static outputs generated during model training and historical analysis.</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-8">
           {[
             { img: "01_india_capacity_forecast.png", title: "Capacity Forecast", desc: "Polynomial projection with confidence intervals up to 2030." },
             { img: "04_revenue_forecast_2030.png", title: "Revenue Forecast", desc: "Capital Expenditure (CapEx) tracking alongside capacity growth." },

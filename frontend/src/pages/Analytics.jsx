@@ -69,9 +69,9 @@ const Analytics = () => {
 
   return (
     <div className="space-y-8 animate-in slide-in-from-right-4 duration-700">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">Detailed Analytics</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Detailed Analytics</h1>
           <p className="text-dark-400">Deep-dive into performance metrics and mathematical models</p>
         </div>
         
@@ -94,7 +94,7 @@ const Analytics = () => {
       </div>
 
       {/* Analysis Selector and Explanation */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:p-8">
         <div className="bg-dark-900 border border-dark-800 p-6 rounded-[2rem] shadow-xl flex flex-col justify-center">
           <label className="text-xs font-black text-dark-500 uppercase tracking-widest mb-3 block">Select Analysis Model</label>
           <select 
@@ -119,7 +119,7 @@ const Analytics = () => {
         </div>
 
         {/* Chart Area */}
-        <div className="lg:col-span-2 bg-dark-900 border border-dark-800 p-8 rounded-[2rem] shadow-xl min-h-[400px]">
+        <div className="lg:col-span-2 bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2rem] shadow-xl min-h-[300px] md:h-[400px]">
           <h3 className="text-lg font-bold text-white mb-6">Top 15 Regions by {metric === 'cagr' ? 'CAGR' : metric === 'yoy' ? 'YoY Growth' : 'Capacity'}</h3>
           {loading ? (
              <div className="flex items-center justify-center h-full">
@@ -158,7 +158,7 @@ const Analytics = () => {
         </div>
       </div>
 
-      <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-2xl">
+      <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-2xl">
         {loading ? (
           <div className="flex items-center justify-center h-64">
             <div className="animate-spin w-8 h-8 border-4 border-solar border-t-transparent rounded-full"></div>

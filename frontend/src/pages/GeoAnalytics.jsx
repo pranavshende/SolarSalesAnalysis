@@ -170,9 +170,9 @@ const GeoAnalytics = () => {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-700">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-6">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">Geo-Intelligence Hub</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Geo-Intelligence Hub</h1>
           <p className="text-dark-400">Regional market analysis and satellite installation finder</p>
         </div>
         
@@ -194,13 +194,13 @@ const GeoAnalytics = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:p-8">
         {/* Map Container */}
         <div className="lg:col-span-8 bg-dark-900 border border-dark-800 rounded-[2.5rem] p-4 relative overflow-hidden h-[650px] shadow-2xl">
           
           {viewMode === 'overview' ? (
             <>
-              <div className="absolute top-8 left-8 z-10 space-y-2">
+              <div className="absolute top-4 md:p-8 left-8 z-10 space-y-2">
                 <button onClick={handleZoomIn} className="w-10 h-10 bg-dark-950/80 backdrop-blur-md border border-dark-800 rounded-xl flex items-center justify-center text-dark-300 hover:text-solar hover:border-solar transition-all shadow-lg">
                   <Plus className="w-5 h-5" />
                 </button>
@@ -458,8 +458,8 @@ const GeoAnalytics = () => {
         </div>
 
         {/* Drill-down Intelligence Panel */}
-        <div className="lg:col-span-4 flex flex-col gap-6">
-          <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] p-8 flex-1 flex flex-col shadow-xl">
+        <div className="lg:col-span-4 flex flex-col gap-4 md:gap-6">
+          <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] p-4 md:p-8 flex-1 flex flex-col shadow-xl">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-display font-bold text-white">
                 {selectedState ? `${selectedState} Zones` : 'Regional Analysis'}
@@ -468,7 +468,7 @@ const GeoAnalytics = () => {
             </div>
 
             {!selectedState ? (
-              <div className="flex-1 flex flex-col items-center justify-center text-center p-8 bg-dark-950/50 rounded-[2rem] border border-dashed border-dark-800 group">
+              <div className="flex-1 flex flex-col items-center justify-center text-center p-4 md:p-8 bg-dark-950/50 rounded-[2rem] border border-dashed border-dark-800 group">
                 <MapPin className="w-12 h-12 text-dark-700 mb-4 group-hover:text-solar transition-colors animate-bounce" />
                 <p className="text-dark-400 text-sm font-medium">Select a state on the map to unlock granular market intelligence</p>
               </div>
@@ -518,7 +518,7 @@ const GeoAnalytics = () => {
             )}
           </div>
 
-          <div className="bg-gradient-to-br from-solar to-orange-600 p-8 rounded-[2.5rem] text-white overflow-hidden relative group shadow-2xl">
+          <div className="bg-gradient-to-br from-solar to-orange-600 p-4 md:p-8 rounded-[2.5rem] text-white overflow-hidden relative group shadow-2xl">
             <div className="relative z-10">
               <h3 className="font-display font-bold text-xl mb-2">Market Leaderboard</h3>
               <p className="text-sm opacity-90 mb-6 leading-relaxed">

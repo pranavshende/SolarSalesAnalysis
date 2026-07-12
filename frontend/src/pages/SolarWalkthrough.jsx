@@ -31,7 +31,7 @@ const SolarWalkthrough = () => {
   return (
     <div className="h-screen w-full bg-dark-950 relative overflow-hidden">
       {/* HUD */}
-      <div className="absolute top-8 left-8 z-10 space-y-4">
+      <div className="absolute top-4 md:p-8 left-8 z-10 space-y-4">
         <button 
           onClick={() => navigate(-1)}
           className="p-3 bg-dark-900/50 backdrop-blur-md border border-dark-800 rounded-2xl text-white hover:bg-solar hover:border-solar transition-all group"
@@ -39,7 +39,7 @@ const SolarWalkthrough = () => {
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         </button>
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">3D Solar Farm Walkthrough</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">3D Solar Farm Walkthrough</h1>
           <p className="text-dark-400 flex items-center gap-2">
             <Box className="w-4 h-4 text-solar" />
             Interactive Utility-Scale Simulation (Experimental)

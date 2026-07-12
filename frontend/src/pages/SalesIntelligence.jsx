@@ -70,7 +70,7 @@ const SalesIntelligence = () => {
     <div className="space-y-8 animate-in slide-in-from-bottom-4 duration-700">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">Sales Intelligence</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Sales Intelligence</h1>
           <p className="text-dark-400">High-growth opportunity zones and performance momentum</p>
         </div>
         <div className="relative">
@@ -85,11 +85,11 @@ const SalesIntelligence = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:p-8">
         {/* Main Content Area */}
         <div className="lg:col-span-8 space-y-8">
           {/* Opportunity Zones */}
-          <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
+          <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] p-4 md:p-8 shadow-2xl relative overflow-hidden">
             <div className="absolute -top-10 -right-10 bg-solar/5 w-40 h-40 rounded-full blur-3xl"></div>
             <div className="flex items-center gap-3 mb-8">
               <div className="bg-solar/10 p-3 rounded-2xl border border-solar/20">
@@ -98,7 +98,7 @@ const SalesIntelligence = () => {
               <h3 className="text-xl font-display font-bold text-white">Targeted Opportunity Zones</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               {opportunityZones.map((zone, idx) => (
                 <div key={idx} className="bg-dark-950 border border-dark-800 p-6 rounded-[2rem] hover:border-solar/40 transition-all group">
                   <div className="flex items-center justify-between mb-4">
@@ -128,7 +128,7 @@ const SalesIntelligence = () => {
           </div>
 
           {/* Feature 7: Hot Leads Scoring Table */}
-          <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] p-8 shadow-xl">
+          <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] p-4 md:p-8 shadow-xl">
              <div className="flex items-center justify-between mb-8">
                <div className="flex items-center gap-3">
                  <div className="bg-orange-500/10 p-3 rounded-2xl border border-orange-500/20">
@@ -179,7 +179,7 @@ const SalesIntelligence = () => {
         {/* Intelligence Side Feed */}
         <div className="lg:col-span-4 space-y-8">
           {/* Feature 3: Weather-Impact Insights */}
-          <div className="bg-gradient-to-br from-dark-900 to-dark-950 border border-dark-800 rounded-[2.5rem] p-8 shadow-xl">
+          <div className="bg-gradient-to-br from-dark-900 to-dark-950 border border-dark-800 rounded-[2.5rem] p-4 md:p-8 shadow-xl">
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-xl font-display font-bold text-white flex items-center gap-2">
                 <CloudRain className="w-5 h-5 text-blue-400" />
@@ -226,7 +226,7 @@ const SalesIntelligence = () => {
             </div>
           </div>
 
-          <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] p-8 shadow-xl flex flex-col">
+          <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] p-4 md:p-8 shadow-xl flex flex-col">
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-xl font-display font-bold text-white flex items-center gap-2">
                 <Award className="w-5 h-5 text-solar" />

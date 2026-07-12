@@ -99,9 +99,9 @@ const InnovationHub = () => {
 
   return (
     <div className="space-y-8 animate-in slide-in-from-right-4 duration-700">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">Innovation Hub</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Innovation Hub</h1>
           <p className="text-dark-400">Advanced AI tools for solar simulation and site analysis</p>
         </div>
         <div className="flex bg-dark-900 border border-dark-800 rounded-2xl p-1.5 shadow-xl">
@@ -129,11 +129,11 @@ const InnovationHub = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:p-8">
         {/* Main Workspace */}
         <div className="lg:col-span-8">
           {activeTool === 'roi' && (
-            <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-2xl space-y-8 h-full">
+            <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-2xl space-y-8 h-full">
                <div className="flex items-center gap-4 mb-4">
                  <div className="bg-solar/10 p-4 rounded-2xl border border-solar/20">
                    <Zap className="w-8 h-8 text-solar" />
@@ -144,7 +144,7 @@ const InnovationHub = () => {
                  </div>
                </div>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8">
                  <div className="space-y-6">
                    <div>
                      <label className="text-xs font-black text-dark-500 uppercase tracking-widest mb-3 block">Avg. Monthly Electricity Bill (₹)</label>
@@ -170,7 +170,7 @@ const InnovationHub = () => {
                    </div>
                  </div>
 
-                 <div className="bg-dark-950 rounded-[2rem] border border-dark-800 p-8 flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                 <div className="bg-dark-950 rounded-[2rem] border border-dark-800 p-4 md:p-8 flex flex-col justify-center items-center text-center relative overflow-hidden group">
                    <div className="absolute inset-0 bg-solar/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                    <p className="text-xs font-black text-dark-500 uppercase tracking-[0.2em] mb-4">Payback Period</p>
                    <div className="text-6xl font-display font-bold text-solar mb-4">
@@ -186,7 +186,7 @@ const InnovationHub = () => {
           )}
 
           {activeTool === 'ar' && (
-            <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-2xl space-y-8 h-full relative overflow-hidden">
+            <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-2xl space-y-8 h-full relative overflow-hidden">
                <div className="flex items-center justify-between">
                  <div className="flex items-center gap-4">
                    <div className="bg-blue-500/10 p-4 rounded-2xl border border-blue-500/20 text-blue-400">
@@ -245,7 +245,7 @@ const InnovationHub = () => {
                                   <CheckCircle2 className="w-12 h-12 text-green-400" />
                                </div>
                             </div>
-                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-dark-950/90 backdrop-blur-md p-4 rounded-2xl border border-green-500/30 flex gap-6">
+                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-dark-950/90 backdrop-blur-md p-4 rounded-2xl border border-green-500/30 flex gap-4 md:gap-6">
                                <div className="text-center">
                                  <p className="text-[10px] text-dark-400 uppercase tracking-widest font-black">Area Detected</p>
                                  <p className="text-lg font-bold text-white">{scanResult.area} sq ft</p>
@@ -276,7 +276,7 @@ const InnovationHub = () => {
           )}
 
           {activeTool === 'policy' && (
-            <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-2xl space-y-8 h-full">
+            <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-2xl space-y-8 h-full">
                <div className="flex items-center gap-4 mb-4">
                  <div className="bg-purple-500/10 p-4 rounded-2xl border border-purple-500/20 text-purple-400">
                    <Building2 className="w-8 h-8" />
@@ -296,7 +296,7 @@ const InnovationHub = () => {
                     { state: "Tamil Nadu", policy: "Solar Rooftop Net-Metering", subsidy: "Feed-in Tariff Benefits", status: "Active" }
                   ].map((p, i) => (
                     <div key={i} className="p-6 bg-dark-950 border border-dark-800 rounded-[1.5rem] hover:border-purple-500/30 transition-all flex justify-between items-center group">
-                      <div className="flex items-center gap-6">
+                      <div className="flex items-center gap-4 md:gap-6">
                         <div className="w-12 h-12 rounded-xl bg-dark-900 border border-dark-800 flex items-center justify-center text-xs font-black text-purple-400">
                           {p.state.substring(0,2).toUpperCase()}
                         </div>
@@ -321,7 +321,7 @@ const InnovationHub = () => {
         {/* Intelligence Sidebar */}
         <div className="lg:col-span-4 space-y-8">
            {/* Feature 2: Sustainability Badges */}
-           <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-xl">
+           <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-xl">
              <h3 className="text-xl font-display font-bold text-white mb-6 flex items-center gap-2">
                <TrendingUp className="w-5 h-5 text-green-400" />
                Impact Leaderboard

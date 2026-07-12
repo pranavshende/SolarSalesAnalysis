@@ -99,7 +99,7 @@ const ExecutiveDashboard = () => {
     <div className="space-y-8 animate-in fade-in duration-700">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">Executive Overview</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Executive Overview</h1>
           <p className="text-dark-400">Real-time solar installation & revenue metrics</p>
         </div>
         <div className="flex items-center gap-3">
@@ -120,7 +120,7 @@ const ExecutiveDashboard = () => {
       </div>
 
       {/* KPI Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         <StatCard 
           label="Total Revenue" 
           value={`₹${totalRevenue} Cr`} 
@@ -146,9 +146,9 @@ const ExecutiveDashboard = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:p-8">
         {/* Trend Analysis */}
-        <div className="lg:col-span-8 bg-dark-900 border border-dark-800 p-8 rounded-[2rem] shadow-xl">
+        <div className="lg:col-span-8 bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2rem] shadow-xl">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-xl font-display font-bold text-white">
               {activeTab === 'capacity' ? 'Capacity Growth Trend' : 'Revenue Performance Trend'}
@@ -168,7 +168,7 @@ const ExecutiveDashboard = () => {
               </button>
             </div>
           </div>
-          <div className="h-[350px] w-full">
+          <div className="h-[250px] md:h-[350px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data?.summary || []}>
                 <defs>
@@ -217,7 +217,7 @@ const ExecutiveDashboard = () => {
 
         {/* Feature 2: Carbon Offset Tracker */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-gradient-to-br from-green-600 to-green-900 border border-green-500/30 p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-green-600 to-green-900 border border-green-500/30 p-4 md:p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
             <Leaf className="absolute -top-10 -right-10 w-40 h-40 opacity-10 rotate-12 group-hover:scale-110 transition-transform" />
             <div className="relative z-10">
               <h3 className="text-xl font-display font-bold text-white mb-6 flex items-center gap-2">
@@ -227,11 +227,11 @@ const ExecutiveDashboard = () => {
               <div className="space-y-6">
                 <div>
                   <p className="text-[10px] uppercase tracking-widest font-black text-green-200 mb-1">CO2 Footprint Reduced</p>
-                  <p className="text-3xl font-display font-bold text-white">{co2Saved} <span className="text-sm font-normal opacity-70">Tons</span></p>
+                  <p className="text-2xl md:text-3xl font-display font-bold text-white">{co2Saved} <span className="text-sm font-normal opacity-70">Tons</span></p>
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest font-black text-green-200 mb-1">Environmental Equivalent</p>
-                  <p className="text-3xl font-display font-bold text-white">{treesEquivalent.toLocaleString()} <span className="text-sm font-normal opacity-70">Trees Planted</span></p>
+                  <p className="text-2xl md:text-3xl font-display font-bold text-white">{treesEquivalent.toLocaleString()} <span className="text-sm font-normal opacity-70">Trees Planted</span></p>
                 </div>
                 <div className="pt-4 border-t border-green-500/30">
                   <div className="flex justify-between items-center text-xs font-bold text-white mb-2">
@@ -247,7 +247,7 @@ const ExecutiveDashboard = () => {
           </div>
 
           {/* Feature 5: Competitive Benchmarking */}
-          <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-xl">
+          <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-xl">
              <h3 className="text-lg font-display font-bold text-white mb-6 flex items-center gap-2">
                <ShieldCheck className="w-5 h-5 text-solar" />
                National Benchmark
@@ -273,9 +273,9 @@ const ExecutiveDashboard = () => {
       </div>
 
       {/* Top States */}
-      <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-xl">
+      <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-xl">
         <h3 className="text-xl font-display font-bold text-white mb-8">Regional Market Concentration</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-8">
           {data?.topPerformers.map((state, idx) => (
             <div key={state.state} className="group cursor-pointer p-4 hover:bg-dark-950 rounded-2xl transition-all border border-transparent hover:border-dark-800">
               <div className="flex items-center justify-between mb-3">

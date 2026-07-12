@@ -93,9 +93,9 @@ const ReportBuilder = () => {
 
   return (
     <div className="space-y-8 animate-in slide-in-from-right-4 duration-700">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
         <div>
-          <h1 className="text-3xl font-display font-bold text-white mb-1">Market Report Builder</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold text-white mb-1">Market Report Builder</h1>
           <p className="text-dark-400">Generate and export granular {reportType}-wise market intelligence</p>
         </div>
         
@@ -119,7 +119,7 @@ const ReportBuilder = () => {
 
       {/* Main Table Container */}
       <div className="bg-dark-900 border border-dark-800 rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col">
-        <div className="p-8 border-b border-dark-800 flex flex-col md:flex-row gap-6 md:items-center justify-between">
+        <div className="p-4 md:p-8 border-b border-dark-800 flex flex-col md:flex-row gap-4 md:gap-6 md:items-center justify-between">
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-dark-500" />
             <input 
@@ -170,19 +170,19 @@ const ReportBuilder = () => {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-dark-950/50">
-                <th className="px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">{reportType === 'state' ? 'State' : 'City / Region'}</th>
-                {reportType === 'city' && <th className="px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">Parent State</th>}
-                <th className="px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">Capacity (kW)</th>
-                <th className="px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">Revenue (Cr)</th>
-                <th className="px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">{reportType === 'state' ? 'CAGR (%)' : 'Latest Year'}</th>
-                <th className="px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">Trend</th>
-                <th className="px-8 py-5 text-right"></th>
+                <th className="px-4 md:px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">{reportType === 'state' ? 'State' : 'City / Region'}</th>
+                {reportType === 'city' && <th className="px-4 md:px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">Parent State</th>}
+                <th className="px-4 md:px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">Capacity (kW)</th>
+                <th className="px-4 md:px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">Revenue (Cr)</th>
+                <th className="px-4 md:px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">{reportType === 'state' ? 'CAGR (%)' : 'Latest Year'}</th>
+                <th className="px-4 md:px-8 py-5 text-[10px] font-black text-dark-500 uppercase tracking-[0.2em]">Trend</th>
+                <th className="px-4 md:px-8 py-5 text-right"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-dark-800">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-8 py-20 text-center text-dark-500">
+                  <td colSpan={7} className="px-4 md:px-8 py-20 text-center text-dark-500">
                     <div className="flex flex-col items-center gap-4">
                       <div className="w-10 h-10 border-2 border-solar border-t-transparent rounded-full animate-spin"></div>
                       <p className="text-xs font-bold uppercase tracking-widest animate-pulse">Compiling Report Data...</p>
@@ -191,13 +191,13 @@ const ReportBuilder = () => {
                 </tr>
               ) : filteredData.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-8 py-20 text-center text-dark-500 italic">
+                  <td colSpan={7} className="px-4 md:px-8 py-20 text-center text-dark-500 italic">
                     No data found matching your filters.
                   </td>
                 </tr>
               ) : filteredData.map((item, idx) => (
                 <tr key={idx} className="hover:bg-dark-800/20 transition-colors group">
-                  <td className="px-8 py-5">
+                  <td className="px-4 md:px-8 py-5">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-dark-950 border border-dark-800 flex items-center justify-center text-[10px] font-bold text-solar">
                         {(reportType === 'state' ? item?.state : item?.city)?.substring(0, 2).toUpperCase() || '??'}
@@ -208,15 +208,15 @@ const ReportBuilder = () => {
                     </div>
                   </td>
                   {reportType === 'city' && (
-                    <td className="px-8 py-5 font-medium text-dark-400 text-xs">{item?.state}</td>
+                    <td className="px-4 md:px-8 py-5 font-medium text-dark-400 text-xs">{item?.state}</td>
                   )}
-                  <td className="px-8 py-5 font-medium text-dark-200">
+                  <td className="px-4 md:px-8 py-5 font-medium text-dark-200">
                     {(reportType === 'state' ? item?.totalCapacity : item?.capacity)?.toLocaleString() || '0'}
                   </td>
-                  <td className="px-8 py-5 font-medium text-dark-200">
+                  <td className="px-4 md:px-8 py-5 font-medium text-dark-200">
                     ₹{(reportType === 'state' ? item?.totalRevenue : item?.revenue)?.toFixed(2) || '0.00'}
                   </td>
-                  <td className="px-8 py-5">
+                  <td className="px-4 md:px-8 py-5">
                     {reportType === 'state' ? (
                       <span className={`text-xs font-bold ${item?.cagr > 0 ? 'text-green-400' : 'text-red-400'}`}>
                         {item?.cagr > 0 ? '+' : ''}{item?.cagr}%
@@ -225,7 +225,7 @@ const ReportBuilder = () => {
                       <span className="text-xs font-bold text-dark-400">{item?.latestYear}</span>
                     )}
                   </td>
-                  <td className="px-8 py-5">
+                  <td className="px-4 md:px-8 py-5">
                     <div className="flex items-center gap-2">
                       <div className="w-20 h-1.5 bg-dark-950 rounded-full overflow-hidden border border-dark-800">
                         <div 
@@ -238,7 +238,7 @@ const ReportBuilder = () => {
                       </span>
                     </div>
                   </td>
-                  <td className="px-8 py-5 text-right">
+                  <td className="px-4 md:px-8 py-5 text-right">
                     <button className="p-2 text-dark-600 hover:text-white rounded-lg transition-colors">
                       <MoreVertical className="w-5 h-5" />
                     </button>
@@ -250,7 +250,7 @@ const ReportBuilder = () => {
         </div>
 
         {/* Pagination Footer */}
-        <div className="p-8 border-t border-dark-800 flex items-center justify-between">
+        <div className="p-4 md:p-8 border-t border-dark-800 flex items-center justify-between">
            <p className="text-xs font-bold text-dark-500 uppercase tracking-widest leading-none">
              Total Records: <span className="text-white">{filteredData.length}</span>
            </p>
@@ -266,15 +266,15 @@ const ReportBuilder = () => {
       </div>
 
       {/* Quick Insights Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8">
+        <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
            <div className="absolute -top-10 -right-10 bg-solar/5 w-32 h-32 rounded-full blur-3xl group-hover:bg-solar/10 transition-all"></div>
            <h3 className="text-sm font-black text-dark-500 uppercase tracking-[0.2em] mb-4">Top Region</h3>
            <p className="text-2xl font-display font-bold text-white mb-2">{data[0]?.state || 'N/A'}</p>
            <p className="text-xs text-dark-400">Leading the current dataset in solar penetration.</p>
         </div>
 
-        <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
+        <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
            <div className="absolute -top-10 -right-10 bg-blue-500/5 w-32 h-32 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all"></div>
            <h3 className="text-sm font-black text-dark-500 uppercase tracking-[0.2em] mb-4">Total Capacity</h3>
            <p className="text-2xl font-display font-bold text-white mb-2">
@@ -283,7 +283,7 @@ const ReportBuilder = () => {
            <p className="text-xs text-dark-400">Cumulative installed capacity in this report view.</p>
         </div>
 
-        <div className="bg-dark-900 border border-dark-800 p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
+        <div className="bg-dark-900 border border-dark-800 p-4 md:p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
            <div className="absolute -top-10 -right-10 bg-green-500/5 w-32 h-32 rounded-full blur-3xl group-hover:bg-green-500/10 transition-all"></div>
            <h3 className="text-sm font-black text-dark-500 uppercase tracking-[0.2em] mb-4">Data Version</h3>
            <p className="text-2xl font-display font-bold text-white mb-2">v1.2.0-PRO</p>
