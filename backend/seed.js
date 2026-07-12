@@ -1,6 +1,6 @@
-const sequelize = require('./config/db');
+const prisma = require('./config/prisma');
 const { processFile } = require('./services/dataProcessor');
-const User = require('./models/User');
+const bcrypt = require('bcryptjs');
 const path = require('path');
 const dotenv = require('dotenv');
 
@@ -8,29 +8,28 @@ dotenv.config();
 
 async function seed() {
   try {
-    await sequelize.authenticate();
-    console.log('Connected to PostgreSQL');
-    
-    // Sync models
-    await sequelize.sync({ alter: true });
-    console.log('Database synced');
+    // Prisma connects automatically, but we can verify connection
+    await prisma.$connect();
+    console.log('Connected to PostgreSQL via Prisma');
 
     // Create a default admin user if not exists
-    let adminUser = await User.findOne({ where: { email: 'admin@solar.com' } });
+    let adminUser = await prisma.user.findUnique({ where: { email: 'admin@solar.com' } });
     if (!adminUser) {
-      adminUser = await User.create({
-        name: 'Admin User',
-        email: 'admin@solar.com',
-        password: 'adminpassword123',
-        role: 'Admin',
-        isVerified: true
+      const hashedPassword = await bcrypt.hash('adminpassword123', 10);
+      adminUser = await prisma.user.create({
+        data: {
+          name: 'Admin User',
+          email: 'admin@solar.com',
+          password: hashedPassword,
+          role: 'Admin',
+          isVerified: true
+        }
       });
       console.log('Created admin user');
     }
 
     // Clear old data to prevent double-counting
-    const SolarData = require('./models/SolarData');
-    await SolarData.destroy({ where: {} });
+    await prisma.solarData.deleteMany({});
     console.log('Cleared existing SolarData records');
 
     const userId = adminUser.id;

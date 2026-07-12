@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  Admin
+  Analyst
+  Sales_Manager @map("Sales Manager")
+  Investor
+}
+
+model User {
+  id         String      @id @default(uuid()) @db.Uuid
+  name       String
+  email      String      @unique
+  password   String
+  role       Role        @default(Analyst)
+  companyId  String?
+  otp        String?
+  otpExpires DateTime?
+  isVerified Boolean     @default(true)
+  lastLogin  DateTime?
+  
+  // Relations
+  solarData  SolarData[]
+
+  @@map("Users") // Sequelize often pluralizes User to Users
+}
+
+model SolarData {
+  id             String   @id @default(uuid()) @db.Uuid
+  state          String
+  city           String?  @default("All")
+  year           Int
+  capacity_kW    Float
+  revenue_Cr     Float
+  datasetVersion String?  @default("1.0.0")
+  uploadedBy     String?  @db.Uuid
+  
+  // Relations
+  user           User?    @relation(fields: [uploadedBy], references: [id])
+
+  @@index([state, year])
+  @@index([state, city, year])
+}

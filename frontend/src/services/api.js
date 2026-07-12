@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const BACKEND_ROOT_URL = API_URL.replace(/\/api\/?$/, ''); // Remove /api to get the root URL for health checks
+const ML_URL = import.meta.env.VITE_ML_URL || 'http://localhost:8000';
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: API_URL,
 });
 
 // Add token to requests
@@ -29,7 +33,7 @@ api.interceptors.response.use(
 export const authAPI = {
   signup: (data) => api.post('/auth/signup', data),
   login: (data) => api.post('/auth/login', data),
-  checkHealth: () => axios.get('http://localhost:5000/health'),
+  checkHealth: () => axios.get(`${BACKEND_ROOT_URL}/health`),
 };
 
 export const dataAPI = {
@@ -45,7 +49,7 @@ export const analyticsAPI = {
   getGrowth: () => api.get('/analytics/growth'),
   getForecast: (state, city) => api.get('/analytics/forecast', { params: { state, city } }),
   analyzeSatellite: (imageData) => api.post('/analytics/analyze-satellite', imageData),
-  checkMLHealth: () => axios.get('http://localhost:8000/'),
+  checkMLHealth: () => axios.get(`${ML_URL}/`),
   restartML: () => api.post('/debug/restart-ml'),
   getSystemStats: () => api.get('/debug/stats'),
   getLogs: () => api.get('/debug/logs'),

@@ -1,7 +1,7 @@
 const xlsx = require('xlsx');
 const csv = require('csv-parser');
 const fs = require('fs');
-const SolarData = require('../models/SolarData');
+const prisma = require('../config/prisma');
 
 const UTILITY_SHARE = 0.80;
 const ROOFTOP_SHARE = 0.20;
@@ -19,7 +19,10 @@ const processFile = async (filePath, fileType, userId) => {
   }
 
   const processedData = normalizeData(rawData, datasetVersion, userId);
-  await SolarData.bulkCreate(processedData);
+  await prisma.solarData.createMany({
+    data: processedData,
+    skipDuplicates: true
+  });
   
   return {
     version: datasetVersion,

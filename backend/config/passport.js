@@ -2,20 +2,31 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const prisma = require('./prisma');
 
 const localOptions = { usernameField: 'email' };
 
 const localLogin = new LocalStrategy(localOptions, async (email, password, done) => {
   try {
-    const user = await User.findOne({ where: { email } });
-    if (!user) return done(null, false, { message: 'User not found' });
+    console.log(`[AUTH DEBUG] Attempting login for email: ${email}`);
+    const formattedEmail = email.toLowerCase().trim();
+    const user = await prisma.user.findUnique({ where: { email: formattedEmail } });
+    if (!user) {
+      console.log(`[AUTH DEBUG] User not found for email: ${email}`);
+      return done(null, false, { message: 'User not found' });
+    }
 
-    const isMatch = await user.comparePassword(password);
+    console.log(`[AUTH DEBUG] User found. Checking password match...`);
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log(`[AUTH DEBUG] Password match result: ${isMatch}`);
+    
     if (!isMatch) return done(null, false, { message: 'Incorrect password' });
 
+    console.log(`[AUTH DEBUG] Login successful for email: ${email}`);
     return done(null, user);
   } catch (err) {
+    console.error(`[AUTH DEBUG] Error during login:`, err);
     return done(err);
   }
 });
@@ -27,7 +38,7 @@ const jwtOptions = {
 
 const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
   try {
-    const user = await User.findByPk(payload.id);
+    const user = await prisma.user.findUnique({ where: { id: payload.id } });
     if (user) {
       done(null, user);
     } else {

@@ -1,7 +1,6 @@
 const analyticsService = require('../services/analyticsService');
-const SolarData = require('../models/SolarData');
 const axios = require('axios');
-const { fn, col } = require('sequelize');
+const prisma = require('../config/prisma');
 
 const getDashboardSummary = async (req, res) => {
   try {
@@ -85,20 +84,20 @@ const getForecast = async (req, res) => {
       matchQuery.city = city;
     }
 
-    const historical = await SolarData.findAll({
+    const historical = await prisma.solarData.groupBy({
+      by: ['year'],
       where: matchQuery,
-      attributes: [
-        'year',
-        [fn('SUM', col('capacity_kW')), 'capacity']
-      ],
-      group: ['year'],
-      order: [['year', 'ASC']],
-      raw: true
+      _sum: {
+        capacity_kW: true
+      },
+      orderBy: {
+        year: 'asc'
+      }
     });
 
     const historical_data = historical.map(h => ({ 
       year: parseInt(h.year), 
-      capacity: Math.max(0, parseFloat(h.capacity || 0)) 
+      capacity: Math.max(0, parseFloat(h._sum.capacity_kW || 0)) 
     }));
     
     if (historical_data.length < 2) {

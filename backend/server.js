@@ -9,11 +9,7 @@ const morgan = require('morgan');
 const http = require('http');
 const passport = require('./config/passport');
 const { initSocket } = require('./services/socket');
-const sequelize = require('./config/db');
-
-// Import models to ensure they are registered with Sequelize
-const User = require('./models/User');
-const SolarData = require('./models/SolarData');
+const prisma = require('./config/prisma');
 
 const app = express();
 const server = http.createServer(app);
@@ -25,7 +21,11 @@ app.set('socketio', io);
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(helmet({
   contentSecurityPolicy: false, 
 }));
@@ -46,7 +46,8 @@ app.use('/api/debug', debugRoutes);
 // Health Check
 app.get('/api/debug/test-forecast', async (req, res) => {
   const analyticsController = require('./controllers/analyticsController');
-  req.query = { state: 'Karnataka', city: 'All' };
+  req.query.state = 'Karnataka';
+  req.query.city = 'All';
   await analyticsController.getForecast(req, res);
 });
 
@@ -57,14 +58,9 @@ app.get('/health', (req, res) => {
 // Database Connection
 const PORT = process.env.PORT || 5000;
 
-sequelize.authenticate()
+prisma.$connect()
   .then(() => {
-    console.log('Connected to PostgreSQL Database');
-    // Sync models
-    return sequelize.sync({ alter: true });
-  })
-  .then(() => {
-    console.log('Database synchronized');
+    console.log('Connected to PostgreSQL Database via Prisma');
     server.listen(PORT, () => {
       console.log(`Backend server running on http://localhost:${PORT}`);
     });
@@ -77,7 +73,7 @@ sequelize.authenticate()
 // Graceful Shutdown
 process.on('SIGTERM', () => {
   server.close(async () => {
-    await sequelize.close();
+    await prisma.$disconnect();
     console.log('Server and DB connection closed');
   });
 });

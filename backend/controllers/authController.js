@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const prisma = require('../config/prisma');
 
 const generateToken = (user) => {
   return jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
@@ -9,19 +10,24 @@ const generateToken = (user) => {
 
 const signup = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
-    const existingUser = await User.findOne({ where: { email } });
+    const { name, password, role } = req.body;
+    const email = req.body.email.toLowerCase().trim();
+    const existingUser = await prisma.user.findUnique({ where: { email } });
 
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    const user = await User.create({
-      name,
-      email,
-      password,
-      role,
-      isVerified: true
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await prisma.user.create({
+      data: {
+        name,
+        email,
+        password: hashedPassword,
+        role,
+        isVerified: true
+      }
     });
 
     res.status(201).json({ 
@@ -39,7 +45,7 @@ const verifyOTP = async (req, res) => {
     const { email, otp } = req.body;
     console.log(`[AUTH] Verifying OTP for ${email}. Provided: ${otp}`);
     
-    const user = await User.findOne({ where: { email } });
+    const user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) return res.status(404).json({ message: 'User not found' });
     if (user.isVerified) return res.status(400).json({ message: 'User already verified' });
@@ -56,10 +62,13 @@ const verifyOTP = async (req, res) => {
       return res.status(400).json({ message: 'OTP has expired. Please request a new one.' });
     }
 
-    await user.update({
-      isVerified: true,
-      otp: null,
-      otpExpires: null
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        isVerified: true,
+        otp: null,
+        otpExpires: null
+      }
     });
 
     const token = generateToken(user);
@@ -77,7 +86,7 @@ const verifyOTP = async (req, res) => {
 const resendOTP = async (req, res) => {
   try {
     const { email } = req.body;
-    const user = await User.findOne({ where: { email } });
+    const user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) return res.status(404).json({ message: 'User not found' });
     if (user.isVerified) return res.status(400).json({ message: 'User already verified' });
@@ -86,7 +95,10 @@ const resendOTP = async (req, res) => {
     const expiryMinutes = parseInt(process.env.OTP_EXPIRY_MINUTES) || 5;
     const otpExpires = new Date(Date.now() + expiryMinutes * 60000);
 
-    await user.update({ otp, otpExpires });
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { otp, otpExpires }
+    });
 
     console.log(`[SIMULATED OTP] New code for ${email}: ${otp}`);
 
@@ -101,7 +113,10 @@ const login = async (req, res) => {
   try {
     const user = req.user;
 
-    await user.update({ lastLogin: new Date() });
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { lastLogin: new Date() }
+    });
 
     const token = generateToken(user);
     res.status(200).json({
