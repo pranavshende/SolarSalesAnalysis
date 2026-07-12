@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { BarChart2, TrendingUp, Activity, MapPin, Info } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, Cell } from 'recharts';
 
@@ -13,10 +13,7 @@ const Analytics = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const token = localStorage.getItem('token');
-        const res = await axios.get(`http://localhost:5000/api/analytics/detailed?type=${type}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        const res = await api.get(`/analytics/detailed?type=${type}`);
         setData(res.data);
       } catch (err) {
         console.error("Failed to load analytics", err);
