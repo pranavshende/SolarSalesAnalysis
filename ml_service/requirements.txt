@@ -6,3 +6,6 @@ numpy
 Pillow
 opencv-python-headless
 python-dotenv
+pandas
+scikit-learn
+statsmodels
