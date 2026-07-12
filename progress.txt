@@ -1,0 +1,119 @@
+# Solar Intelligence & Sales Optimization Platform - Progress Report
+
+## ✅ COMPLETED / IMPLEMENTED
+1. **Frontend Dashboard Suite**
+   - Executive Dashboard (High-level metrics & trends)
+   - Revenue Dashboard (Financial drill-down)
+   - Forecasting Module (ML-powered predictions with ARIMA/Linear Regression)
+   - Geo-Analytics (Interactive India map with state-to-city drill-down)
+   - Sales Intelligence (UI for market momentum and opportunity zones)
+   - Report Builder (Tabular data management and filtering)
+
+2. **Backend & AI Services**
+   - MERN Stack Foundation (MongoDB, Express, React, Node)
+   - Python FastAPI ML Microservice (Forecasting engine)
+   - Secure Auth (JWT, Role-Based Access Control, OTP Verification)
+   - Data Ingestion (CSV/Excel processing and normalization)
+   - Health Monitoring (Navbar status for Backend & ML services)
+
+3. **Design & UX**
+   - Premium "Midnight & Frost" design system
+   - Responsive layouts and micro-animations
+
+---
+
+## ⏳ REMAINING / TO DO (IN PROGRESS)
+
+### 1. Sales Intelligence Refinement
+- [ ] **Real Metric Calculations**: Replace `Math.random()` in `analyticsController.js` with actual growth momentum and demand index logic based on historical data.
+- [ ] **Dynamic AI Alerts**: Generate market alerts dynamically in the backend based on data anomalies (e.g., Rajasthan surge, Gujarat efficiency) instead of hardcoded frontend text.
+
+### 2. Export & Reporting Functionality
+- [ ] **Excel Export**: Implement server-side or client-side XLSX generation for the Report Builder.
+- [ ] **JSON/PDF Export**: Add functional buttons for data extraction and print-ready dashboard views.
+
+### 3. Forecasting & ML Stability
+- [ ] **City-Level Fixes**: Resolve "Internal Server Error" issues when performing forecasts for specific cities with sparse data.
+- [ ] **Confidence Intervals**: Refine the visual display of upper/lower bounds in the forecasting chart.
+
+### 4. Production Readiness
+- [ ] **Real OTP Integration**: Transition from simulated console-log OTPs to actual email delivery (SendGrid/SMTP).
+- [ ] **Permission Gates**: Implement hard gates on the frontend to restrict pages based on user roles (Admin vs. Analyst vs. Investor).
+- [x] **Geo Mapping Update**: Restored missing `india_topo.json` to enable Geo Analytics.
+- [x] **IDE Cleanup**: Suppressed unknown CSS at-rule warnings (@tailwind, @apply).
+
+---
+
+## 📅 SESSION UPDATE — 23 April 2026
+
+### ✅ Newly Completed
+
+#### 4. Geo-Intelligence Hub (Major Upgrade)
+- [x] **Dynamic Satellite Map**: Integrated Leaflet.js with ArcGIS World Imagery tile layer for real satellite view.
+- [x] **Solar Park Markers**: Added 5 major Indian solar parks (Bhadla, Pavagada, Kurnool, Rewa, Kamuthi) as interactive map markers with popups.
+- [x] **Satellite Site Finder Mode**: Tab-switching between choropleth overview and satellite imagery view.
+- [x] **Location Search**: Nominatim-powered geocoding search bar to fly to any city/region.
+- [x] **AI Maintenance Heatmap Toggle**: Overlay for dust/soiling/yield loss risk visualization.
+- [x] **3D Preview Link**: "3D Preview" button inside each solar park popup routes to the SolarWalkthrough 3D simulation page.
+- [x] **City-Wise Hover Tooltips**: Hovering a state on the market overview map now shows a rich card with:
+  - State name & total installed capacity (kW)
+  - Top 3 cities ranked by capacity with individual kW figures
+- [x] **Backend: Top Cities per State**: `analyticsService.getStateMetrics()` now runs an aggregation per state to include `topCities[]` in the API payload.
+
+#### 5. Real-Time Satellite Vision AI Pipeline
+- [x] **Canvas Capture**: `html2canvas` captures the live Leaflet satellite viewport pixels.
+- [x] **OpenCV ML Endpoint**: Added `/analyze-satellite` POST endpoint to the Python FastAPI ML service.
+  - HSV color segmentation detects dark-blue/black PV cluster signatures.
+  - OpenCV contour analysis measures total panel pixel area.
+  - MW capacity derived via `pixel_area × zoom_factor` heuristic.
+- [x] **Backend Proxy**: `analyticsController.analyzeSatellite()` proxies requests to the ML service.
+- [x] **Frontend Integration**: "Analyze Satellite View" button calls the real pipeline.
+  - Shows "Scanning Pixels..." loading state while processing.
+  - Displays a result card with: Estimated Capacity (MW), Panel Clusters detected, Confidence Score, Analysis Details.
+  - Graceful CORS fallback simulation if tile capture is blocked.
+- [x] **Dependencies**: Installed `opencv-python-headless`, `Pillow` in ML venv; `html2canvas` in frontend.
+
+#### 6. Innovation Hub & 3D Walkthrough
+- [x] **InnovationHub Page**: ROI Financial Simulator, Policy & Subsidy Tracker, VAMI interface.
+- [x] **SolarWalkthrough Page**: Three.js / @react-three/fiber interactive 3D solar farm simulation.
+- [x] **Routing**: `/innovation` and `/walkthrough` routes registered in `App.jsx`.
+- [x] **Sidebar**: Innovation Hub added to nav with Zap icon.
+
+#### 7. Executive Dashboard Enhancements
+- [x] **Carbon Offset Tracker**: Displays CO2 savings and tree-equivalent metrics.
+- [x] **Competitive Benchmarking**: Section comparing regional market performance.
+
+#### 8. Sales Intelligence Enhancements
+- [x] **Smart Lead Prioritization**: Weighted scoring engine ranks leads by potential.
+- [x] **Weather-Impact Insights**: Sidebar showing weather-correlated sales opportunities.
+
+#### 9. Auth & Stability
+- [x] **OTP Removed**: Simplified auth flow — direct email + password login, no OTP step.
+- [x] **CSS Import Order Fix**: Resolved Leaflet stylesheet conflicts in `index.css`.
+- [x] **Build Verified**: `vite build` passes cleanly with 3131 modules, zero errors.
+
+---
+
+## ⏳ REMAINING / TO DO (UPDATED)
+
+### 1. Sales Intelligence Refinement
+- [ ] **Dynamic AI Alerts**: Generate market alerts from backend data anomalies.
+
+### 2. Export & Reporting Functionality
+- [ ] **Excel/PDF Export**: Functional XLSX and PDF generation in Report Builder.
+
+### 3. Forecasting Stability
+- [ ] **City-Level Edge Cases**: Handle sparse city data in ML fallback gracefully.
+
+### 4. Production Readiness
+- [ ] **Role-Based Permission Gates**: Restrict pages by user role (Admin / Analyst / Investor).
+- [ ] **Real Email OTP**: Integrate SendGrid/SMTP for production auth.
+- [ ] **Vision AI Accuracy**: Replace HSV heuristic with a trained UNet/SAM model for production-grade PV detection.
+- [ ] **Voice Intelligence (VAMI)**: Connect VAMI in InnovationHub to a real STT backend.
+
+---
+
+## 🚀 NEXT IMMEDIATE STEPS
+1. Implement Excel export in `ReportBuilder.jsx` using `xlsx` or `exceljs`.
+2. Add role-based route guards in `App.jsx`.
+3. Refine ML capacity heuristic with calibrated zoom-to-meter constants.

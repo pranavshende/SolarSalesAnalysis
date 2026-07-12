@@ -1,0 +1,20 @@
+{
+  "name": "solar-intelligence-platform",
+  "version": "1.0.0",
+  "description": "Solar Intelligence & Sales Optimization Platform",
+  "scripts": {
+    "frontend": "npm run dev --prefix frontend",
+    "backend": "npm run dev --prefix backend",
+    "ml": "ml_service\\.venv\\Scripts\\python.exe -m uvicorn main:app --app-dir ml_service --port 8000",
+    "dev": "concurrently --kill-others \"npm run frontend\" \"npm run backend\" \"npm run ml\"",
+    "seed": "node backend/seed.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.0",
+    "three": "^0.184.0"
+  }
+}
