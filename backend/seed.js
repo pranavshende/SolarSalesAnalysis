@@ -12,28 +12,30 @@ async function seed() {
     await prisma.$connect();
     console.log('Connected to PostgreSQL via Prisma');
 
-    // Create a default admin user if not exists
-    let adminUser = await prisma.user.findUnique({ where: { email: 'admin@solar.com' } });
-    if (!adminUser) {
-      const hashedPassword = await bcrypt.hash('adminpassword123', 10);
-      adminUser = await prisma.user.create({
+    // Create the demo user for reviewers
+    let demoUser = await prisma.user.findUnique({ where: { email: 'project@pranavshende.online' } });
+    if (!demoUser) {
+      const hashedPassword = await bcrypt.hash('Password@123', 10);
+      demoUser = await prisma.user.create({
         data: {
-          name: 'Admin User',
-          email: 'admin@solar.com',
+          name: 'Project Reviewer',
+          email: 'project@pranavshende.online',
           password: hashedPassword,
           role: 'Admin',
           isVerified: true
         }
       });
-      console.log('Created admin user');
+      console.log('Created demo user: project@pranavshende.online');
     }
+    
+    // Fallback to demoUser id if adminUser is missing
+    const userId = demoUser.id;
 
     // Clear old data to prevent double-counting
     await prisma.solarData.deleteMany({});
     console.log('Cleared existing SolarData records');
 
-    const userId = adminUser.id;
-    
+
     const stateFilePath = path.resolve(__dirname, '..', 'output', 'solar_sales_analysis.csv');
     console.log(`Processing ${stateFilePath}...`);
     const stateResult = await processFile(stateFilePath, 'csv', userId);

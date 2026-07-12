@@ -86,11 +86,24 @@ const Login = () => {
         </motion.div>
       </form>
 
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9 }}
+        className="mt-6 p-4 bg-solar-500/10 border border-solar-500/20 rounded-xl text-sm text-dark-300 text-center"
+      >
+        <p className="font-bold text-solar-400 mb-2">Demo Credentials for Reviewers</p>
+        <div className="flex flex-col gap-1">
+          <p>Email: <span className="text-white font-mono ml-1">project@pranavshende.online</span></p>
+          <p>Password: <span className="text-white font-mono ml-1">Password@123</span></p>
+        </div>
+      </motion.div>
+
       <motion.p 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="text-center mt-8 text-dark-400 text-sm"
+        className="text-center mt-6 text-dark-400 text-sm"
       >
         Don't have an account?{' '}
         <Link to="/signup" className="text-solar-400 hover:text-solar-300 font-bold ml-1 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-solar-400 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">
